@@ -2,6 +2,13 @@ import { useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei';
 
+// Импортируем модели
+import zenitUrl from './assets/zenit.glb?url'
+import nagantUrl from './assets/nagant.glb?url'
+import umbrellaUrl from './assets/bulgarian_umbrella.glb?url'
+import severUrl from './assets/sever.glb?url'
+import phoneUrl from './assets/phone.glb?url'
+
 // Типизация для одного экспоната
 interface Exhibition {
   model: string;
@@ -23,7 +30,7 @@ function Model({ model, ...props }: ModelProps) {
 // Массив экспонатов
 const exhibitions : Exhibition[] = [
   {
-    model: "zenit.glb",
+    model: zenitUrl,
     title: "Зенит Фотоснайпер ФС-3",
     description: (
       <>
@@ -61,7 +68,7 @@ const exhibitions : Exhibition[] = [
     ),
   },
   {
-    model: "nagant.glb",
+    model: nagantUrl,
     title: "Нагант 1895",
     description: (
       <>
@@ -70,7 +77,7 @@ const exhibitions : Exhibition[] = [
     ),
   },
   {
-    model: "bulgarian_umbrella.glb",
+    model: umbrellaUrl,
     title: "Болгарский зонт",
     description: (
       <>
@@ -79,7 +86,7 @@ const exhibitions : Exhibition[] = [
     )
   },
   {
-    model: "sever.glb",
+    model: severUrl,
     title: "Радио - Север",
     description: (
       <>
@@ -119,7 +126,7 @@ const exhibitions : Exhibition[] = [
     ),
   },
   {
-    model: "phone.glb",
+    model: phoneUrl,
     title: "Шпионский телефон",
     description: (
       <>
@@ -176,7 +183,7 @@ export default function Spy() {
           >
             <Stage intensity={0.5} environment="city" adjustCamera castShadow>
               <Suspense fallback={null}>
-                <Model scale={0.005} model={`/${exhibitions[curExhibition].model}`} />
+                <Model scale={0.005} model={`${exhibitions[curExhibition].model}`} />
               </Suspense>
             </Stage>
           </PresentationControls>

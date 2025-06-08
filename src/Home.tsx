@@ -1,4 +1,4 @@
-import MainPage from "/main_page.png";
+import MainPage from "./assets/main_page.png";
 
 function Home() {
     return (
@@ -32,7 +32,7 @@ function Home() {
 
                         Мы хотим сделать историю шпионажа доступной и увлекательной, чтобы каждый посетитель мог не только узнать о технических достижениях, но и почувствовать атмосферу тайных миссий и острых противостояний между разведками мира. Откройте для себя удивительный мир шпионских технологий Холодной войны вместе с нами!<br/><br/>
                     </p>
-                    <a href="#begin" className="text-[#DEE4EB]/80 my-5 font-bold text-[48px] word-break-all px-8 py-4 rounded-md bg-linear-to-t underline from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition">
+                    <a href="/SpionageMuseum#begin" className="text-[#DEE4EB]/80 my-5 font-bold text-[48px] word-break-all px-8 py-4 rounded-md bg-linear-to-t underline from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition">
                     НАЧАТЬ ЭКСКУРСИЮ
                     </a>
                 </div>
@@ -61,7 +61,7 @@ function Home() {
                                 Шпионские гаджеты времен Холодной войны не только отражали технологический уровень эпохи, но и становились прототипами для многих современных средств скрытого наблюдения и разведки. Их использование было тесно связано с интенсивной борьбой спецслужб, где успех операций во многом зависел от надежности и изобретательности технических средств.
                             </p>
                         </p>
-                        <a href="/spy" className="flex flex-row hover:cursor-pointer w-1/2 my-5 font-bold px-8 py-4 rounded-md bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition justify-between ">
+                        <a href="/SpionageMuseum/spy" className="flex flex-row hover:cursor-pointer w-1/2 my-5 font-bold px-8 py-4 rounded-md bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition justify-between ">
                             <div className="text-[#DEE4EB]/80 text-[48px] w-full text-center underline">
                                 Посмотреть экспонаты
                             </div>
@@ -99,7 +99,7 @@ function Home() {
                       </p>
                     </p>
                 
-                    <a href="/quiz" className="flex flex-row hover:cursor-pointer w-1/2 my-5 font-bold px-8 py-4 rounded-md bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition justify-between">
+                    <a href="/SpionageMuseum/quiz" className="flex flex-row hover:cursor-pointer w-1/2 my-5 font-bold px-8 py-4 rounded-md bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition justify-between">
                       <div className="text-[#DEE4EB]/80 text-[48px] w-full text-center underline">
                         Начать тест
                       </div>

@@ -213,7 +213,7 @@ return (
   <main className="flex justify-center items-center h-screen w-full bg-[#101010] relative">
     {/* Кнопка "На главную" */}
     <a
-      href="/"
+      href="/SpionageMuseum/"
       className="absolute top-6 left-6 px-4 py-2 text-4xl font-extrabold text-[#DEE4EB]/80 hover:bg-[#303030]/90 transition-all z-50 rounded-md"
     >
       {"<"}
