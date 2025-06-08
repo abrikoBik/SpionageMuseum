@@ -1,13 +1,27 @@
-import { useState, Suspense } from 'react'
-import { Canvas } from "@react-three/fiber"
-import { useGLTF, Stage, PresentationControls, Loader } from "@react-three/drei"
+import { useState, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { useGLTF, Stage, PresentationControls } from '@react-three/drei';
 
-function Model ({ model, ...props }) {
-  const { scene } = useGLTF(model);
-  return <primitive object={scene} {...props} />
+// Типизация для одного экспоната
+interface Exhibition {
+  model: string;
+  title: string;
+  description: React.ReactNode;
 }
 
-const exhibitions = [
+// Типизация для модели
+interface ModelProps {
+  model: string;
+  [key: string]: any;
+}
+
+function Model({ model, ...props }: ModelProps) {
+  const { scene } = useGLTF(model);
+  return <primitive object={scene} {...props} />;
+}
+
+// Массив экспонатов
+const exhibitions : Exhibition[] = [
   {
     model: "zenit.glb",
     title: "Зенит Фотоснайпер ФС-3",
@@ -114,8 +128,9 @@ const exhibitions = [
   }
 ];
 
-function Spy() {
-  const [curExhibition, setExhibition] = useState(0);
+// Главный компонент
+export default function Spy() {
+  const [curExhibition, setExhibition] = useState<number>(0);
 
   return (
     <main className="flex flex-row w-[100vw] h-[100vh] bg-[#101010] relative">
@@ -134,14 +149,22 @@ function Spy() {
           aria-label="Предыдущий экспонат"
           onClick={() => setExhibition(Math.max(curExhibition - 1, 0))}
           disabled={curExhibition === 0}
-          className={`absolute w-10 h-10 text-[#DEE4EB]/20 text-4xl font-bold top-1/2 -translate-y-1/2 left-6 cursor-pointer z-40 ${curExhibition === 0 ? 'opacity-30 pointer-events-none' : ''}`}
-        >{"<"}</button>
+          className={`absolute w-10 h-10 text-[#DEE4EB]/20 text-4xl font-bold top-1/2 -translate-y-1/2 left-6 cursor-pointer z-40 ${
+            curExhibition === 0 ? 'opacity-30 pointer-events-none' : ''
+          }`}
+        >
+          {"<"}
+        </button>
         <button
           aria-label="Следующий экспонат"
           onClick={() => setExhibition(Math.min(curExhibition + 1, exhibitions.length - 1))}
           disabled={curExhibition === exhibitions.length - 1}
-          className={`absolute w-10 h-10 text-[#DEE4EB]/20 text-4xl font-bold top-1/2 -translate-y-1/2 right-6 cursor-pointer z-40 ${curExhibition === exhibitions.length - 1 ? 'opacity-30 pointer-events-none' : ''}`}
-        >{">"}</button>
+          className={`absolute w-10 h-10 text-[#DEE4EB]/20 text-4xl font-bold top-1/2 -translate-y-1/2 right-6 cursor-pointer z-40 ${
+            curExhibition === exhibitions.length - 1 ? 'opacity-30 pointer-events-none' : ''
+          }`}
+        >
+          {">"}
+        </button>
         <Canvas dpr={[1, 2]} shadows camera={{ fov: 45 }}>
           <color attach="background" args={["#101010"]} />
           <PresentationControls
@@ -151,11 +174,7 @@ function Spy() {
             polar={[-0.2, 0.2]}
             rotation={[0, Math.PI + Math.PI / 4, 0]}
           >
-            <Stage 
-              intensity={0.5}
-              environment="city"
-              adjustCamera={true}
-              castShadow>
+            <Stage intensity={0.5} environment="city" adjustCamera castShadow>
               <Suspense fallback={null}>
                 <Model scale={0.005} model={`/${exhibitions[curExhibition].model}`} />
               </Suspense>
@@ -168,15 +187,13 @@ function Spy() {
           <div
             key={i}
             className={`w-8 h-8 max-lg:w-4 max-lg:h-4 rounded-full mx-1 transition-all duration-200 ${
-              curExhibition === i ? 'bg-gradient-to-t from-gray-100/30 to-gray-400/30' : 'bg-gradient-to-t from-gray-100/10 to-gray-400/10 scale-70'
+              curExhibition === i
+                ? 'bg-gradient-to-t from-gray-100/30 to-gray-400/30'
+                : 'bg-gradient-to-t from-gray-100/10 to-gray-400/10 scale-70'
             }`}
           />
         ))}
       </div>
-
-      <Loader />
     </main>
   );
 }
-
-export default Spy;
