@@ -210,88 +210,104 @@ const SpyQuiz: React.FC = () => {
   };
 
 return (
-  <main className="flex justify-center items-center h-screen w-full bg-[#101010] relative">
-    {/* Кнопка "На главную" */}
-    <a
-      href="/"
-      className="absolute top-6 left-6 px-4 py-2 text-4xl font-extrabold text-[#DEE4EB]/80 hover:bg-[#303030]/90 transition-all z-50 rounded-md"
-    >
-      {"<"}
-    </a>
+    <main className="
+      flex justify-center items-center min-h-[100dvh] w-full bg-[#101010] relative px-1 xs:px-2 sm:px-4
+      overflow-auto
+    ">
+      {/* Кнопка "На главную" */}
+      <a
+        href="/"
+        className="absolute top-2 left-2 xs:top-4 xs:left-4 px-2 xs:px-3 py-1 xs:py-2 text-2xl xs:text-3xl md:text-4xl font-extrabold text-[#DEE4EB]/80 hover:bg-[#303030]/90 transition-all z-50 rounded-md"
+      >
+        {"<"}
+      </a>
 
-    {/* Центральный блок с тестом */}
-    <div className="w-full max-w-xl mx-auto h-auto bg-gradient-to-t from-gray-100/10 to-gray-400/10 rounded-[20px] p-8 md:p-10 flex flex-col transition-all text-white">
-      {!showResult ? (
-        <>
-          <h1 className="text-3xl md:text-4xl font-bold text-center text-[#DEE4EB]/80 underline pb-6 transition-all">
-            Тест по экспонатам
-          </h1>
-          <p className="text-sm md:text-base text-[#DEE4EB]/80 mb-4 text-center">
-            Вопрос {currentQuestion + 1} из {questions.length}
-          </p>
-          <h2 className="text-lg md:text-xl text-[#DEE4EB]/80 mb-6">
-            {questions[currentQuestion].question}
-          </h2>
-          <ul className="mb-6 space-y-3 flex-grow">
-            {questions[currentQuestion].options.map((option, index) => (
-              <li key={index}>
-                <label className="flex items-center cursor-pointer space-x-3 py-1">
-                  <input
-                    type="radio"
-                    name="quiz-answer"
-                    value={option}
-                    checked={selectedAnswer === option}
-                    onChange={() => handleAnswerSelect(option)}
-                    className="w-5 h-5 accent-blue-500"
-                  />
-                  <span className="text-base md:text-lg text-[#DEE4EB]/80">{option}</span>
-                </label>
-              </li>
-            ))}
-          </ul>
-          <button
-            onClick={handleNext}
-            disabled={!selectedAnswer}
-            className={`mt-4 px-6 py-4 rounded-md font-bold text-2xl text-[#DEE4EB]/80 underline bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition-all ${
-              !selectedAnswer ? 'opacity-50 pointer-events-none' : ''
-            }`}
-          >
-            {currentQuestion === questions.length - 1 ? 'Завершить' : 'Следующий'}
-          </button>
-        </>
-      ) : (
-        <div className="flex flex-col items-center justify-center flex-1 text-center transition-all">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#DEE4EB]/80 mb-6">Тест завершён!</h2>
-          <p className="text-xl text-[#DEE4EB]/80 mb-8">
-            Правильных ответов: {correctCount} из {questions.length}
-          </p>
-          <button
-            onClick={restartTest}
-            className="px-6 py-4 rounded-md font-bold text-2xl text-[#DEE4EB]/80 underline bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition-all"
-          >
-            Пройти снова
-          </button>
-        </div>
-      )}
-    </div>
-
-    {/* Индикатор прогресса внизу */}
-    <div className="absolute left-1/2 bottom-10 -translate-x-1/2 transition-all">
-      <div className="flex space-x-2">
-        {questions.map((_, i) => (
-          <div
-            key={i}
-            className={`w-8 h-8 rounded-full transition-all duration-300 ${
-              currentQuestion === i && !showResult
-                ? 'bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 scale-110'
-                : 'bg-gradient-to-t from-[#D9D9D9]/20 to-[#737373]/20 scale-90'
-            }`}
-          ></div>
-        ))}
+      {/* Центральный блок с тестом */}
+      <div className="
+        w-full max-w-md xs:max-w-lg sm:max-w-xl mx-auto h-auto
+        bg-gradient-to-t from-gray-100/10 to-gray-400/10
+        rounded-[14px] xs:rounded-[18px] sm:rounded-[20px]
+        p-2 xs:p-4 sm:p-8 md:p-10 flex flex-col transition-all text-white
+        shadow-md
+        min-h-[30vh] max-h-[60vh] overflow-auto
+        max-lg:mx-5
+      ">
+        {!showResult ? (
+          <>
+            <h1 className="text-lg xs:text-xl sm:text-2xl md:text-4xl font-bold text-center text-[#DEE4EB]/80 underline pb-2 xs:pb-4 sm:pb-6 transition-all">
+              Тест по экспонатам
+            </h1>
+            <p className="text-xs xs:text-sm md:text-base text-[#DEE4EB]/80 mb-2 xs:mb-4 text-center">
+              Вопрос {currentQuestion + 1} из {questions.length}
+            </p>
+            <h2 className="text-base xs:text-lg md:text-xl text-[#DEE4EB]/80 mb-3 xs:mb-6 break-words">
+              {questions[currentQuestion].question}
+            </h2>
+            <ul className="mb-3 xs:mb-6 space-y-2 xs:space-y-3 flex-grow">
+              {questions[currentQuestion].options.map((option, index) => (
+                <li key={index}>
+                  <label className="flex items-center cursor-pointer space-x-2 xs:space-x-3 py-0.5 xs:py-1">
+                    <input
+                      type="radio"
+                      name="quiz-answer"
+                      value={option}
+                      checked={selectedAnswer === option}
+                      onChange={() => handleAnswerSelect(option)}
+                      className="w-4 h-4 xs:w-5 xs:h-5 accent-blue-500"
+                    />
+                    <span className="text-xs xs:text-base md:text-lg text-[#DEE4EB]/80 break-words">{option}</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={handleNext}
+              disabled={!selectedAnswer}
+              className={`
+                mt-2 xs:mt-4 px-3 xs:px-4 sm:px-6 py-2 xs:py-3 sm:py-4
+                rounded-md font-bold text-base xs:text-xl sm:text-2xl text-[#DEE4EB]/80 underline
+                bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition-all
+                ${!selectedAnswer ? 'opacity-50 pointer-events-none' : ''}
+              `}
+            >
+              {currentQuestion === questions.length - 1 ? 'Завершить' : 'Следующий'}
+            </button>
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center flex-1 text-center transition-all">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-[#DEE4EB]/80 mb-3 xs:mb-6">Тест завершён!</h2>
+            <p className="text-base xs:text-lg sm:text-xl text-[#DEE4EB]/80 mb-4 xs:mb-8">
+              Правильных ответов: {correctCount} из {questions.length}
+            </p>
+            <button
+              onClick={restartTest}
+              className="px-3 xs:px-4 sm:px-6 py-2 xs:py-3 sm:py-4 rounded-md font-bold text-base xs:text-xl sm:text-2xl text-[#DEE4EB]/80 underline bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 hover:bg-[#303030]/90 transition-all"
+            >
+              Пройти снова
+            </button>
+          </div>
+        )}
       </div>
-    </div>
-  </main>
-);
+
+      {/* Индикатор прогресса внизу */}
+      <div className="absolute left-1/2 bottom-2 xs:bottom-4 sm:bottom-10 -translate-x-1/2 transition-all w-full flex justify-center pointer-events-none alert">
+        <div className="flex flex-wrap justify-center gap-1 xs:gap-2 max-w-full px-2">
+          {questions.map((_, i) => (
+            <div
+              key={i}
+              className={`
+                w-4 h-4 xs:w-6 xs:h-6 sm:w-8 sm:h-8 rounded-full transition-all duration-300
+                ${currentQuestion === i && !showResult
+                  ? 'bg-gradient-to-t from-[#D9D9D9]/80 to-[#737373]/80 scale-110'
+                  : 'bg-gradient-to-t from-[#D9D9D9]/20 to-[#737373]/20 scale-90'
+                }
+              `}
+            ></div>
+          ))}
+        </div>
+      </div>
+    </main>
+  );
 };
 
 export default SpyQuiz;
