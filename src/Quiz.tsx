@@ -229,7 +229,7 @@ return (
         rounded-[14px] xs:rounded-[18px] sm:rounded-[20px]
         p-2 xs:p-4 sm:p-8 md:p-10 flex flex-col transition-all text-white
         shadow-md
-        min-h-[30vh] max-h-[60vh] overflow-auto
+        min-h-[400px] max-h-[60vh] overflow-auto
         max-lg:mx-5
       ">
         {!showResult ? (

@@ -143,10 +143,10 @@ export default function Spy() {
     <main className="flex flex-row w-[100vw] h-[100vh] bg-[#101010] relative">
       <div className="w-[40%] h-full p-10">
         <div className="w-full h-full bg-gradient-to-t from-gray-100/10 to-gray-400/10 rounded-[20px] max-lg:rounded-[10px] px-10 pb-10 flex flex-col transition">
-          <h1 className="text-lg xs:text-xl sm:text-2xl md:text-3xl w-full font-semibold text-[#DEE4EB] text-center underline pb-4 transition">
+          <h1 className="text-md xs:text-lg sm:text-xl md:text-2xl w-full font-semibold text-[#DEE4EB] text-center underline pb-4 transition">
             {exhibitions[curExhibition].title}
           </h1>
-          <section className="text-md xs:text-lg sm:text-xl md:text-2xl text-[#DEE4EB] flex-1 overflow-y-auto transition">
+          <section className="text-sm xs:text-md sm:text-lg md:text-xl text-[#DEE4EB] flex-1 overflow-y-auto transition">
             {exhibitions[curExhibition].description}
           </section>
         </div>
