@@ -8,7 +8,7 @@ import SpyQuiz from './Quiz.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Router basename="/SpionageMuseum">
+    <Router>
       <Routes>
         <Route path="/spy" element={<Spy/>}/>
         <Route path="/quiz" element={<SpyQuiz/>}/>
